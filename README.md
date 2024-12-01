@@ -20,5 +20,5 @@ This will download and execute the uninstallation script to remove the program.
 
 ## License
 
-[MIT](https://github.com/Nyxify/Catify/blob/main/LICENSE)
+[MIT](https://github.com/Nyxify/Catify/blob/main/LICENSE.md)
 
