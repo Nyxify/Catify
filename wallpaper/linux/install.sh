@@ -11,7 +11,7 @@ mkdir -p "$SCRIPT_DIR"
 mkdir -p "$AUTOSTART_DIR"
 
 # Download the script
-curl -s "https://raw.githubusercontent.com/Nyxify/Catify/main/wallpaper/linux/linux.sh" -o "$SCRIPT_PATH"
+curl -s "https://raw.githubusercontent.com/Nyxify/Catify/refs/heads/main/wallpaper/linux/linux.sh" -o "$SCRIPT_PATH"
 chmod +x "$SCRIPT_PATH"
 
 # Create autostart desktop entry

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WALLPAPER_DIR="$HOME/.local/share/catify/wallpapers"
-GITHUB_URL="https://github.com/Nyxify/Catify/wallpaper/assets"
+GITHUB_URL="https://github.com/Nyxify/Catify.git"
 
 mkdir -p "$WALLPAPER_DIR"
 git clone "$GITHUB_URL" "$WALLPAPER_DIR/temp" && \
