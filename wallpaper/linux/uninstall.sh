@@ -2,8 +2,8 @@
 
 removed=false
 
-if [ -d "$HOME/.local/share/catify" ]; then
-  rm -rf "$HOME/.local/share/catify"
+if [ -d ~/.local/share/catify ]; then
+  rm -rf ~/.local/share/catify
   removed=true
 fi
 
