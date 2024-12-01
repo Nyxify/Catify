@@ -5,7 +5,7 @@ GITHUB_URL="https://github.com/Nyxify/Catify.git"
 
 mkdir -p "$WALLPAPER_DIR"
 git clone "$GITHUB_URL" "$WALLPAPER_DIR/temp" && \
-  mv "$WALLPAPER_DIR/temp/"* "$WALLPAPER_DIR/" 2>/dev/null && \
+  mv "$WALLPAPER_DIR/temp/wallpaper/assets/"* "$WALLPAPER_DIR/" && \
   rm -rf "$WALLPAPER_DIR/temp"
 
 WALLPAPER=$(find "$WALLPAPER_DIR" -type f -name "*.jp*g" -o -name "*.png" | shuf -n 1)
