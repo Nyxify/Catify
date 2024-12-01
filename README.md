@@ -7,7 +7,7 @@ curl -sSL https://raw.githubusercontent.com/Nyxify/Catify/refs/heads/main/wallpa
 ```
 This will execute the installation script to setup the wallpapers.
 
-## Linux Uninstallation
+## Uninstallation on Linux
 If you want to uninstall Catify Wallpapers, you can run the following command in your terminal:
 ```
 curl -sSL https://raw.githubusercontent.com/Nyxify/Catify/refs/heads/main/wallpaper/linux/uninstall.sh | bash
