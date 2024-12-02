@@ -14,7 +14,8 @@ Invoke-WebRequest -Uri $SCRIPT_URL -OutFile $SCRIPT_PATH
 $WScriptShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WScriptShell.CreateShortcut("$STARTUP_DIR\CatifyWallpaper.lnk")
 $Shortcut.TargetPath = "powershell.exe"
-$Shortcut.Arguments = "-WindowStyle Hidden -ExecutionPolicy Bypass -File `"$SCRIPT_PATH`""
+$Shortcut.Arguments = "-WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NonInteractive -File `"$SCRIPT_PATH`""
+$Shortcut.WindowStyle = 7  # Minimized window
 $Shortcut.Save()
 
 # Initial run

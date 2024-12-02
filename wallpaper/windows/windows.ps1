@@ -6,9 +6,7 @@ $GITHUB_URL = "https://github.com/Nyxify/Catify.git"
 New-Item -ItemType Directory -Force -Path $WALLPAPER_DIR | Out-Null
 
 # Download and extract wallpapers
-git clone $GITHUB_URL "$WALLPAPER_DIR\temp"
-Move-Item "$WALLPAPER_DIR\temp\wallpaper\assets\*" $WALLPAPER_DIR -Force
-Remove-Item "$WALLPAPER_DIR\temp" -Recurse -Force
+Start-Process -FilePath "powershell" -ArgumentList "-Command", "git clone $GITHUB_URL `"$WALLPAPER_DIR\temp`"; Move-Item `"$WALLPAPER_DIR\temp\wallpaper\assets\*`" $WALLPAPER_DIR -Force; Remove-Item `"$WALLPAPER_DIR\temp`" -Recurse -Force" -WindowStyle Hidden
 
 # Select random wallpaper
 $WALLPAPER = Get-ChildItem -Path $WALLPAPER_DIR -Include @("*.jpg","*.jpeg","*.png") -Recurse | Get-Random | Select-Object -ExpandProperty FullName
