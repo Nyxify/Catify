@@ -2,11 +2,12 @@
 $WALLPAPER_DIR = "$env:USERPROFILE\catify\wallpapers"
 $GITHUB_URL = "https://github.com/Nyxify/Catify.git"
 
+# Run in separate process if path exists, otherwise run directly
 if (Test-Path -Path $WALLPAPER_DIR) {
-    Start-Process -FilePath "powershell" -ArgumentList "git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C `"$WALLPAPER_DIR`"" -WindowStyle Hidden
+    Start-Process -FilePath "powershell" -ArgumentList "-Command", "git clone $GITHUB_URL `"$WALLPAPER_DIR\temp`"; Move-Item `"$WALLPAPER_DIR\temp\wallpaper\assets\*`" $WALLPAPER_DIR -Force; Remove-Item `"$WALLPAPER_DIR\temp`" -Recurse -Force" -WindowStyle Hidden
 } else {
     New-Item -ItemType Directory -Force -Path $WALLPAPER_DIR | Out-Null
-    Start-Process -FilePath "powershell" -ArgumentList "git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C `"$WALLPAPER_DIR`"" -WindowStyle Hidden -Wait
+    Start-Process -FilePath "powershell" -ArgumentList "-Command", "git clone $GITHUB_URL `"$WALLPAPER_DIR\temp`"; Move-Item `"$WALLPAPER_DIR\temp\wallpaper\assets\*`" $WALLPAPER_DIR -Force; Remove-Item `"$WALLPAPER_DIR\temp`" -Recurse -Force" -WindowStyle Hidden -Wait
 }
 
 # Select random wallpaper
