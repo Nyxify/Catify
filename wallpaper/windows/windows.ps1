@@ -1,5 +1,5 @@
 # Set up paths and URLs
-$WALLPAPER_DIR = "$env:USERPROFILE\.local\share\catify\wallpapers"
+$WALLPAPER_DIR = "$env:USERPROFILE\catify\wallpapers"
 $GITHUB_URL = "https://github.com/Nyxify/Catify.git"
 
 # Create directory if it doesn't exist

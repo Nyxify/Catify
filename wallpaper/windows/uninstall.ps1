@@ -1,8 +1,8 @@
 $removed = $false
 
 # Remove script directory
-if (Test-Path "$env:USERPROFILE\.local\share\catify") {
-    Remove-Item "$env:USERPROFILE\.local\share\catify" -Recurse -Force
+if (Test-Path "$env:USERPROFILE\catify") {
+    Remove-Item "$env:USERPROFILE\catify" -Recurse -Force
     $removed = $true
 }
 

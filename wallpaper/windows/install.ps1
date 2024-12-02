@@ -1,5 +1,5 @@
 # Set up paths for script and autostart
-$SCRIPT_DIR = "$env:USERPROFILE\.local\share\catify"
+$SCRIPT_DIR = "$env:USERPROFILE\catify"
 $SCRIPT_PATH = "$SCRIPT_DIR\windows.ps1"
 $STARTUP_DIR = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
 
