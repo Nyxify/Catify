@@ -29,7 +29,7 @@ curl -sSL https://raw.githubusercontent.com/Nyxify/Catify/refs/heads/main/wallpa
 ```
 
 ### Windows
-If you want to uninstall Catify Wallpapers on your Windows system, you can run the following command in commad prompt:
+If you want to uninstall Catify Wallpapers on your Windows system, you can run the following command in command prompt:
 ```
 curl -o "%TEMP%\uninstall.ps1" https://raw.githubusercontent.com/Nyxify/Catify/main/wallpaper/windows/uninstall.ps1 && powershell -ExecutionPolicy Bypass -File "%TEMP%\uninstall.ps1" & del "%TEMP%\uninstall.ps1" && pause
 ```
