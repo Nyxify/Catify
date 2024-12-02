@@ -7,7 +7,7 @@ if (Test-Path -Path $WALLPAPER_DIR) {
     Start-Process -FilePath "powershell" -ArgumentList "-Command", "git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C `"$WALLPAPER_DIR`"" -WindowStyle Hidden
 } else {
     New-Item -ItemType Directory -Force -Path $WALLPAPER_DIR | Out-Null
-    git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C "$WALLPAPER_DIR"
+    Start-Process -FilePath "powershell" -ArgumentList "-Command", "git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C `"$WALLPAPER_DIR`"" -WindowStyle Hidden -Wait
 }
 
 # Select random wallpaper
