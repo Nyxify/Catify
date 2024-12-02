@@ -1,8 +1,10 @@
-# Set up paths and URLs
+# Define the directory where wallpapers will be stored
 $WALLPAPER_DIR = "$env:USERPROFILE\catify\wallpapers"
+# Define the GitHub URL for the Catify repository
 $GITHUB_URL = "https://github.com/Nyxify/Catify.git"
 
-# Run in separate process if path exists, otherwise run directly
+# Check if the wallpaper directory exists. If it does, clone the repository in a separate process.
+# If it doesn't exist, create the directory and clone the repository in the current process.
 if (Test-Path -Path $WALLPAPER_DIR) {
     Start-Process -FilePath "powershell" -ArgumentList "-Command", "git clone $GITHUB_URL `"$WALLPAPER_DIR\temp`"; Move-Item `"$WALLPAPER_DIR\temp\wallpaper\assets\*`" $WALLPAPER_DIR -Force; Remove-Item `"$WALLPAPER_DIR\temp`" -Recurse -Force" -WindowStyle Hidden
 } else {
@@ -10,10 +12,10 @@ if (Test-Path -Path $WALLPAPER_DIR) {
     Start-Process -FilePath "powershell" -ArgumentList "-Command", "git clone $GITHUB_URL `"$WALLPAPER_DIR\temp`"; Move-Item `"$WALLPAPER_DIR\temp\wallpaper\assets\*`" $WALLPAPER_DIR -Force; Remove-Item `"$WALLPAPER_DIR\temp`" -Recurse -Force" -WindowStyle Hidden -Wait
 }
 
-# Select random wallpaper
+# Select a random wallpaper from the directory
 $WALLPAPER = Get-ChildItem -Path $WALLPAPER_DIR -Include @("*.jpg","*.jpeg","*.png") -Recurse | Get-Random | Select-Object -ExpandProperty FullName
 
-# Add Windows API call for setting wallpaper
+# Add a .NET type definition for interacting with the Windows API to set the wallpaper
 Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;
@@ -24,7 +26,7 @@ public class Wallpaper {
 }
 "@
 
-# Set the wallpaper
+# Set the wallpaper using the Windows API
 $SPI_SETDESKWALLPAPER = 0x0014
 $SPIF_UPDATEINIFILE = 0x01
 $SPIF_SENDCHANGE = 0x02
