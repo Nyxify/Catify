@@ -2,10 +2,13 @@
 $WALLPAPER_DIR = "$env:USERPROFILE\catify\wallpapers"
 $GITHUB_URL = "https://github.com/Nyxify/Catify.git"
 
-# Create directory if it doesn't exist
-New-Item -ItemType Directory -Force -Path $WALLPAPER_DIR | Out-Null
-
-Start-Process -FilePath "powershell" -ArgumentList "-Command", "git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C `"$WALLPAPER_DIR`"" -WindowStyle Hidden
+# Run in separate process if path exists, otherwise run directly
+if (Test-Path -Path $WALLPAPER_DIR) {
+    Start-Process -FilePath "powershell" -ArgumentList "-Command", "git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C `"$WALLPAPER_DIR`"" -WindowStyle Hidden
+} else {
+    New-Item -ItemType Directory -Force -Path $WALLPAPER_DIR | Out-Null
+    git archive --remote=$GITHUB_URL HEAD:wallpaper/assets | tar -x -C "$WALLPAPER_DIR"
+}
 
 # Select random wallpaper
 $WALLPAPER = Get-ChildItem -Path $WALLPAPER_DIR -Include @("*.jpg","*.jpeg","*.png") -Recurse | Get-Random | Select-Object -ExpandProperty FullName
