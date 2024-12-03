@@ -4,12 +4,6 @@
 WALLPAPER_DIR="$HOME/.local/share/catify/wallpapers"
 GITHUB_URL="https://github.com/Nyxify/Catify.git"
 
-# Create directory and download wallpapers
-mkdir -p "$WALLPAPER_DIR"
-git clone "$GITHUB_URL" "$WALLPAPER_DIR/temp" && \
-  mv "$WALLPAPER_DIR/temp/wallpaper/assets/"* "$WALLPAPER_DIR/" && \
-  rm -rf "$WALLPAPER_DIR/temp"
-
 # Select random wallpaper
 WALLPAPER=$(find "$WALLPAPER_DIR" -type f -name "*.jp*g" -o -name "*.png" | shuf -n 1)
 
